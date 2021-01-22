@@ -13,7 +13,7 @@ from tqdm import tqdm
 DATADIR = f'{os.path.abspath(os.getcwd())}/PetImages'
 CATEGORIES = ['Dog', 'Cat']
 
-IMG_SIZE = 50
+IMG_SIZE = 64
 
 print(DATADIR)
 

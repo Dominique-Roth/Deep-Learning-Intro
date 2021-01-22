@@ -12,7 +12,7 @@ import pickle
 import numpy as np
 from datetime import datetime
 
-dense_layers = [0, 1, 2]
+dense_layers = [0]
 layer_sizes = [32, 64, 128]
 conv_layers = [1, 2, 3]
 epochs = [3, 5, 10]
@@ -51,6 +51,7 @@ for epoch in epochs:
                 for l in range(dense_layer):
                     model.add(Dense(layer_size))
                     model.add(Activation('relu'))
+                    model.add(Dropout(0.2))
 
                 model.add(Dense(1))
                 model.add(Activation('sigmoid'))
@@ -61,7 +62,7 @@ for epoch in epochs:
 
                 model.fit(X, y, batch_size=32, epochs=epoch, validation_split=0.3, validation_data=(X, y), callbacks=[tensorboard_callback],)
 
-
+                model.save(f'models/{layer_size}x{conv_layer}-{epoch}e-CNN.model')
                 # In[ ]:
 
 
